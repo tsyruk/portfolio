@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Margarita Tsyruk | Portfolio</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #111827;
+      --card: #1e293b;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #0ea5e9;
+      --border: #334155;
+      --max-width: 1000px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, var(--bg) 0%, #020617 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    .container {
+      width: 90%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.95);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(8px);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero {
+      padding: 5rem 0 4rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      max-width: 700px;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--accent);
+      color: #0f172a;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      background: var(--accent-hover);
+      color: white;
+    }
+
+    .button.secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .button.secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: transparent;
+    }
+
+    section {
+      padding: 3rem 0;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      max-width: 700px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .card {
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .card h3 {
+      margin-bottom: 0.75rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      font-size: 0.85rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    ul {
+      padding-left: 1.1rem;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .note {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .nav {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Margarita Tsyruk</div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>IT Graduate | Cloud | Linux | Hands-On Technical Projects</h1>
+        <p>
+          I’m Margarita Tsyruk, an IT graduate building practical experience in cloud, Linux, and technical support by creating real projects and documenting what I learn along the way.
+        </p>
+        <div class="button-group">
+          <a class="button" href="#projects">View My Projects</a>
+          <a class="button secondary" href="https://github.com/tsyruk" target="_blank">GitHub Profile</a>
+        </div>
+        <p class="note">Later, you can add LinkedIn, a resume link, and a professional headshot here if you want.</p>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-intro">
+          I’m focused on building a portfolio that shows I can learn technical tools, follow documentation, troubleshoot issues, and complete real hands-on projects. Right now, I’m growing my skills in Azure, Linux administration, networking basics, and web hosting.
+        </p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-intro">
+          I only have a few projects right now, and that’s completely fine. A strong portfolio can start small as long as each project clearly shows what you built, what tools you used, and what you learned.
+        </p>
+
+        <div class="grid projects-grid">
+          <article class="card">
+            <h3>Azure Linux Admin Project</h3>
+            <p>
+              Deployed an Ubuntu virtual machine in Microsoft Azure, connected with SSH, installed Nginx, hosted a custom webpage, and configured NSG rules for secure access.
+            </p>
+            <div class="tags">
+              <span class="tag">Azure</span>
+              <span class="tag">Linux</span>
+              <span class="tag">Nginx</span>
+              <span class="tag">SSH</span>
+              <span class="tag">Networking</span>
+            </div>
+            <a href="https://github.com/tsyruk/azure-linux-admin-project" target="_blank">View Project Repo</a>
+          </article>
+
+          <article class="card">
+            <h3>Nook Project</h3>
+            <p>
+              Add a short description here explaining what this project does, what tools you used, and what problem it solves. Keep it simple and clear.
+            </p>
+            <div class="tags">
+              <span class="tag">Project</span>
+              <span class="tag">GitHub</span>
+              <span class="tag">In Progress</span>
+            </div>
+            <a href="https://github.com/tsyruk" target="_blank">Add Project Link</a>
+          </article>
+
+          <article class="card">
+            <h3>Next Project Coming Soon</h3>
+            <p>
+              Use this card as a placeholder until you finish your next project. When you're ready, replace this text with your new project details.
+            </p>
+            <div class="tags">
+              <span class="tag">Upcoming</span>
+              <span class="tag">Portfolio Growth</span>
+            </div>
+            <a href="#contact">Ask Me About My Work</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <div class="grid skills-grid">
+          <div class="card">
+            <h3>Cloud & Infrastructure</h3>
+            <ul>
+              <li>Microsoft Azure</li>
+              <li>Virtual Machines</li>
+              <li>Network Security Groups</li>
+              <li>Public IP and DNS basics</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Linux & Admin</h3>
+            <ul>
+              <li>Ubuntu Linux</li>
+              <li>SSH access</li>
+              <li>Nginx installation</li>
+              <li>Basic server configuration</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Web & Tools</h3>
+            <ul>
+              <li>HTML/CSS</li>
+              <li>Git & GitHub</li>
+              <li>Command line basics</li>
+              <li>Troubleshooting</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-intro">
+          The easiest way to reach me is through GitHub for now. Later, you can add LinkedIn, your email, and a downloadable resume.
+        </p>
+        <div class="button-group">
+          <a class="button" href="https://github.com/tsyruk" target="_blank">GitHub</a>
+          <a class="button secondary" href="mailto:youremail@example.com">Add Your Email</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Margarita Tsyruk. Built with HTML and CSS.</p>
+    </div>
+  </footer>
+</body>
+</html>
