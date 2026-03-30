@@ -1,5 +1,15 @@
-# portfolio
-https://www.margarita-tech.dev/
+# Margarita Tsyruk Portfolio
 
-Personal portfolio website for Margarita Tsyruk, featuring IT projects, technical skills, and a downloadable resume.
-Built with HTML and published as a simple public portfolio site.
+Live site: [www.margarita-tech.dev](https://www.margarita-tech.dev/)
+
+Personal portfolio website showcasing my IT, cloud, and technical projects, along with my skills, resume, and contact information.
+
+## About
+This site was built to serve as a professional portfolio for entry-level IT and technical roles. It highlights hands-on projects, core skills, and my resume in a simple, accessible format.
+
+## Tech Used
+- HTML
+- GitHub Pages
+
+## Live Website
+[www.margarita-tech.dev](https://www.margarita-tech.dev/)
