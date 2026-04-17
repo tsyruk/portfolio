@@ -21,6 +21,8 @@
       --accent: #1D4ED8;
       --accent-light: #EEF3FF;
       --accent-mid: #BFCFFF;
+      --charcoal-a: #1E2530;
+      --charcoal-b: #2D3748;
     }
 
     html { scroll-behavior: smooth; }
@@ -45,19 +47,17 @@
       z-index: 0;
     }
 
-    nav, section, footer { position: relative; z-index: 1; }
+    nav, section, footer, #hero-wrap { position: relative; z-index: 1; }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0; z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 3rem; height: 64px;
       background: rgba(246,248,255,0.9);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
-
     .nav-left { display: flex; align-items: center; gap: 0.75rem; }
     .nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
     .nav-name { font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
@@ -69,51 +69,41 @@
     .nav-cta { font-size: 13px; font-weight: 500; padding: 0.5rem 1.25rem; background: var(--ink); color: white; text-decoration: none; border-radius: 6px; transition: background 0.15s; }
     .nav-cta:hover { background: var(--accent); }
 
-    /* HERO WRAPPER — full-bleed with split background */
+    /* ── HERO WRAPPER — split background ── */
     #hero-wrap {
-      position: relative;
-      overflow: hidden;
       min-height: 100vh;
       padding-top: 64px;
+      overflow: hidden;
     }
 
-    /* Right-half blue panel */
-    #hero-wrap::before {
-      content: '';
+    /* right charcoal panel */
+    #hero-panel {
       position: absolute;
-      top: 0; right: 0;
-      width: 48%;
-      height: 100%;
-      background: linear-gradient(160deg, #1a3fa8 0%, #2563EB 60%, #3B82F6 100%);
+      top: 64px; right: 0;
+      width: 48%; height: calc(100% - 64px);
+      background: linear-gradient(150deg, var(--charcoal-a) 0%, var(--charcoal-b) 100%);
       z-index: 0;
     }
 
-    /* Decorative rings on the blue panel */
-    #hero-wrap::after {
+    /* decorative ring */
+    #hero-panel::after {
       content: '';
       position: absolute;
-      top: 50%;
-      right: 10%;
-      transform: translate(50%, -50%);
-      width: 520px; height: 520px;
+      top: 50%; left: 50%;
+      transform: translate(-30%, -50%);
+      width: 440px; height: 440px;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 0 0 60px rgba(255,255,255,0.04), 0 0 0 120px rgba(255,255,255,0.03);
-      z-index: 0;
-      pointer-events: none;
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: 0 0 0 60px rgba(255,255,255,0.03), 0 0 0 120px rgba(255,255,255,0.02);
     }
 
     #hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      max-width: 1200px;
-      margin: 0 auto;
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr;
+      max-width: 1200px; margin: 0 auto;
       padding: 0 3rem;
-      align-items: center;
-      gap: 2.5rem;
+      align-items: center; gap: 2.5rem;
       min-height: calc(100vh - 64px);
-      position: relative;
-      z-index: 1;
     }
 
     .hero-left { padding: 3rem 0; }
@@ -126,7 +116,6 @@
       margin-bottom: 1.75rem;
       box-shadow: 0 1px 4px rgba(0,0,0,0.05);
     }
-
     .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #22C55E; animation: pulse 2s ease-in-out infinite; }
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
@@ -136,16 +125,13 @@
       font-weight: 800; color: var(--ink);
       line-height: 1.0; letter-spacing: -0.03em; margin-bottom: 1.25rem;
     }
-
     h1.hero-name em { font-style: normal; color: var(--accent); }
 
     .hero-desc { font-size: 1.05rem; color: var(--muted); line-height: 1.8; max-width: 480px; margin-bottom: 2rem; font-weight: 300; }
-
     .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
 
     .btn-dark { display: inline-block; padding: 0.75rem 1.75rem; background: var(--ink); color: white; font-size: 14px; font-weight: 500; text-decoration: none; border-radius: 8px; transition: all 0.15s; }
     .btn-dark:hover { background: var(--accent); transform: translateY(-1px); }
-
     .btn-outline { display: inline-block; padding: 0.75rem 1.75rem; background: white; color: var(--ink); font-size: 14px; font-weight: 500; text-decoration: none; border-radius: 8px; border: 1px solid var(--border-strong); transition: all 0.15s; }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
 
@@ -153,76 +139,51 @@
     .meta-value { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; line-height: 1; margin-bottom: 0.2rem; }
     .meta-label { font-size: 12px; color: var(--muted); font-weight: 400; }
 
-    /* HERO RIGHT — photo on blue panel */
-    .hero-right {
-      display: flex; justify-content: center; align-items: center;
-      padding: 3rem 0 3rem 2rem;
-    }
+    /* photo on charcoal */
+    .hero-right { display: flex; justify-content: center; align-items: center; padding: 3rem 0 3rem 2rem; }
 
-    .photo-block { position: relative; width: 320px; }
+    .photo-block { position: relative; width: 300px; }
 
     .photo-img {
       position: relative; z-index: 1;
       width: 100%; display: block; border-radius: 14px;
-      border: 3px solid rgba(255,255,255,0.3);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+      border: 2px solid rgba(255,255,255,0.18);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
       object-fit: cover;
     }
 
-    .photo-cert-stack {
-      position: absolute;
-      bottom: -16px; left: -28px; z-index: 2;
-      display: flex; flex-direction: column; gap: 6px;
-    }
-
-    .photo-cert-pill {
-      display: flex; align-items: center; gap: 7px;
-      padding: 6px 12px; background: white;
-      border: 1px solid var(--border); border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.12); white-space: nowrap;
-    }
-
+    .photo-cert-stack { position: absolute; bottom: -16px; left: -28px; z-index: 2; display: flex; flex-direction: column; gap: 6px; }
+    .photo-cert-pill { display: flex; align-items: center; gap: 7px; padding: 6px 12px; background: white; border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.14); white-space: nowrap; }
     .cert-icon { width: 20px; height: 20px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0; color: white; }
     .cert-icon.azure { background: #0078D4; }
     .cert-icon.google { background: #4285F4; }
-
     .photo-cert-name { font-family: 'Bricolage Grotesque', sans-serif; font-size: 11px; font-weight: 700; color: var(--ink); }
 
-    /* SECTION COMMON */
+    /* ── SECTION COMMON ── */
     .section-wrap { max-width: 1200px; margin: 0 auto; padding: 3.5rem 3rem; }
-
     .section-label { display: flex; align-items: center; gap: 0.75rem; font-size: 12px; font-weight: 500; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
     .section-label::before { content: ''; display: block; width: 20px; height: 1.5px; background: var(--accent); }
-
     h2.section-heading { font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 800; color: var(--ink); letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 0.75rem; }
-
     .section-sub { font-size: 1rem; color: var(--muted); font-weight: 300; max-width: 520px; margin-bottom: 2rem; }
 
-    /* ABOUT */
+    /* ── ABOUT ── */
     #about { background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-
     .about-p { font-size: 1rem; color: var(--ink-mid); line-height: 1.85; margin-bottom: 1.25rem; font-weight: 300; }
-
     .about-highlights { display: flex; flex-direction: column; gap: 0.85rem; }
-
     .highlight-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; display: flex; align-items: flex-start; gap: 1rem; }
     .highlight-icon { width: 34px; height: 34px; border-radius: 8px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 15px; }
     .highlight-text-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 0.15rem; }
     .highlight-text-sub { font-size: 13px; color: var(--muted); font-weight: 300; }
 
-    /* PROJECTS */
+    /* ── PROJECTS ── */
     .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-
     .project-card { background: white; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; text-decoration: none; display: flex; flex-direction: column; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
     .project-card:hover { border-color: var(--accent-mid); box-shadow: 0 8px 32px rgba(29,78,216,0.08); transform: translateY(-3px); }
-
     .project-top-bar { height: 4px; background: var(--accent); }
     .project-card:nth-child(2) .project-top-bar { background: #7C3AED; }
     .project-card:nth-child(3) .project-top-bar { background: #059669; }
     .project-card:nth-child(4) .project-top-bar { background: #DC2626; }
-
     .project-content { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
     .project-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; letter-spacing: -0.01em; }
     .project-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.7; flex: 1; margin-bottom: 1.25rem; font-weight: 300; }
@@ -233,38 +194,31 @@
     .project-arrow { width: 28px; height: 28px; border-radius: 6px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--accent); transition: background 0.15s, transform 0.15s; }
     .project-card:hover .project-arrow { background: var(--accent); color: white; transform: translate(2px,-2px); }
 
-    /* SKILLS + CERTS */
+    /* ── SKILLS + CERTS ── */
     #skills { background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-
     .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-
     .skill-group-label { font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.65rem; }
     .skills-groups { display: flex; flex-direction: column; gap: 1.75rem; }
     .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .skill-tag { font-size: 13px; padding: 0.4rem 0.9rem; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--ink-mid); transition: all 0.15s; }
     .skill-tag:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
-
     .certs-column { display: flex; flex-direction: column; gap: 1rem; }
     .certs-title { font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.25rem; }
-
     .cert-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; display: flex; align-items: center; gap: 1rem; }
     .cert-logo { width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: white; flex-shrink: 0; }
     .cert-logo.azure { background: #0078D4; }
     .cert-logo.google { background: #4285F4; }
     .cert-logo.comptia { background: #E8231A; }
-
     .cert-card-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 0.15rem; }
     .cert-card-sub { font-size: 12px; color: var(--muted); font-weight: 300; }
     .cert-badge-pill { margin-left: auto; font-size: 10px; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 100px; letter-spacing: 0.04em; text-transform: uppercase; flex-shrink: 0; }
     .cert-badge-pill.earned { background: #DCFCE7; color: #166534; }
     .cert-badge-pill.progress { background: #FEF9C3; color: #854D0E; }
 
-    /* CONTACT */
+    /* ── CONTACT ── */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-
     .contact-left h2 { font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 800; color: var(--ink); letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 1rem; }
     .contact-left p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; font-weight: 300; }
-
     .contact-links { display: flex; flex-direction: column; gap: 0.65rem; }
     .contact-row { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; border: 1px solid var(--border); border-radius: 10px; text-decoration: none; background: white; transition: all 0.15s; }
     .contact-row:hover { border-color: var(--accent-mid); box-shadow: 0 4px 16px rgba(29,78,216,0.07); transform: translateX(4px); }
@@ -275,7 +229,7 @@
     .contact-chevron { font-size: 18px; color: var(--muted); transition: color 0.15s, transform 0.15s; }
     .contact-row:hover .contact-chevron { color: var(--accent); transform: translateX(3px); }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer { background: var(--ink); padding: 1.75rem 3rem; display: flex; align-items: center; justify-content: space-between; }
     .footer-left { display: flex; align-items: center; gap: 0.65rem; }
     .footer-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-mid); }
@@ -285,18 +239,17 @@
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 960px) {
       nav { padding: 0 1.5rem; }
       .nav-sub, .nav-divider { display: none; }
-      #hero-wrap::before { display: none; }
-      #hero-wrap::after { display: none; }
-      #hero { grid-template-columns: 1fr; padding: 3rem 1.5rem 2rem; gap: 2rem; }
+      #hero-panel { display: none; }
+      #hero { grid-template-columns: 1fr; padding: 2.5rem 1.5rem 2rem; }
       .hero-right { display: none; }
       .section-wrap { padding: 2.5rem 1.5rem; }
       .about-grid, .skills-layout, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
       .projects-grid { grid-template-columns: 1fr; }
     }
-
     @media (max-width: 600px) {
       .nav-links { display: none; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -322,18 +275,15 @@
   </nav>
 
   <div id="hero-wrap">
+    <div id="hero-panel"></div>
     <section id="hero">
       <div class="hero-left fade-in">
         <div class="hero-badge">
           <span class="badge-dot"></span>
           Open to IT Support Opportunities
         </div>
-        <h1 class="hero-name">
-          Margarita<br><em>Tsyruk</em>
-        </h1>
-        <p class="hero-desc">
-          IT graduate building practical skills in cloud, Linux, and technical support - through real projects, hands-on labs, and documented work.
-        </p>
+        <h1 class="hero-name">Margarita<br><em>Tsyruk</em></h1>
+        <p class="hero-desc">IT graduate building practical skills in cloud, Linux, and technical support - through real projects, hands-on labs, and documented work.</p>
         <div class="hero-actions">
           <a href="#projects" class="btn-dark">View Projects</a>
           <a href="https://github.com/tsyruk" target="_blank" class="btn-outline">GitHub Profile</a>
@@ -384,34 +334,10 @@
           <p class="about-p">Currently growing in networking fundamentals and pursuing CompTIA A+ certification as I continue expanding what I can do.</p>
         </div>
         <div class="about-highlights">
-          <div class="highlight-card">
-            <div class="highlight-icon">&#9729;</div>
-            <div>
-              <div class="highlight-text-title">Cloud Infrastructure</div>
-              <div class="highlight-text-sub">Azure VM deployment, NSG configuration, SSH access</div>
-            </div>
-          </div>
-          <div class="highlight-card">
-            <div class="highlight-icon">&#128187;</div>
-            <div>
-              <div class="highlight-text-title">Systems Administration</div>
-              <div class="highlight-text-sub">Active Directory, Windows Server, Linux admin</div>
-            </div>
-          </div>
-          <div class="highlight-card">
-            <div class="highlight-icon">&#128196;</div>
-            <div>
-              <div class="highlight-text-title">Scripting & Automation</div>
-              <div class="highlight-text-sub">PowerShell help desk toolkits, AD automation scripts</div>
-            </div>
-          </div>
-          <div class="highlight-card">
-            <div class="highlight-icon">&#127891;</div>
-            <div>
-              <div class="highlight-text-title">MS IT Graduate - SNHU</div>
-              <div class="highlight-text-sub">CompTIA A+ in progress</div>
-            </div>
-          </div>
+          <div class="highlight-card"><div class="highlight-icon">&#9729;</div><div><div class="highlight-text-title">Cloud Infrastructure</div><div class="highlight-text-sub">Azure VM deployment, NSG configuration, SSH access</div></div></div>
+          <div class="highlight-card"><div class="highlight-icon">&#128187;</div><div><div class="highlight-text-title">Systems Administration</div><div class="highlight-text-sub">Active Directory, Windows Server, Linux admin</div></div></div>
+          <div class="highlight-card"><div class="highlight-icon">&#128196;</div><div><div class="highlight-text-title">Scripting & Automation</div><div class="highlight-text-sub">PowerShell help desk toolkits, AD automation scripts</div></div></div>
+          <div class="highlight-card"><div class="highlight-icon">&#127891;</div><div><div class="highlight-text-title">MS IT Graduate - SNHU</div><div class="highlight-text-sub">CompTIA A+ in progress</div></div></div>
         </div>
       </div>
     </div>
@@ -471,47 +397,32 @@
         <div class="skills-groups">
           <div>
             <div class="skill-group-label">Cloud & Infrastructure</div>
-            <div class="skill-tags">
-              <span class="skill-tag">Microsoft Azure</span><span class="skill-tag">Virtual Machines</span><span class="skill-tag">Network Security Groups</span><span class="skill-tag">DNS & Public IP</span><span class="skill-tag">VirtualBox</span>
-            </div>
+            <div class="skill-tags"><span class="skill-tag">Microsoft Azure</span><span class="skill-tag">Virtual Machines</span><span class="skill-tag">Network Security Groups</span><span class="skill-tag">DNS & Public IP</span><span class="skill-tag">VirtualBox</span></div>
           </div>
           <div>
             <div class="skill-group-label">Systems & Administration</div>
-            <div class="skill-tags">
-              <span class="skill-tag">Active Directory</span><span class="skill-tag">Windows Server</span><span class="skill-tag">Ubuntu Linux</span><span class="skill-tag">SSH</span><span class="skill-tag">Nginx</span><span class="skill-tag">Group Policy</span>
-            </div>
+            <div class="skill-tags"><span class="skill-tag">Active Directory</span><span class="skill-tag">Windows Server</span><span class="skill-tag">Ubuntu Linux</span><span class="skill-tag">SSH</span><span class="skill-tag">Nginx</span><span class="skill-tag">Group Policy</span></div>
           </div>
           <div>
             <div class="skill-group-label">Scripting & Development</div>
-            <div class="skill-tags">
-              <span class="skill-tag">PowerShell</span><span class="skill-tag">Bash</span><span class="skill-tag">Git & GitHub</span><span class="skill-tag">HTML / CSS / JS</span><span class="skill-tag">Supabase</span>
-            </div>
+            <div class="skill-tags"><span class="skill-tag">PowerShell</span><span class="skill-tag">Bash</span><span class="skill-tag">Git & GitHub</span><span class="skill-tag">HTML / CSS / JS</span><span class="skill-tag">Supabase</span></div>
           </div>
         </div>
         <div class="certs-column">
           <div class="certs-title">Certifications</div>
           <div class="cert-card">
             <div class="cert-logo azure">Az</div>
-            <div>
-              <div class="cert-card-title">Microsoft Azure Fundamentals</div>
-              <div class="cert-card-sub">AZ-900 - Microsoft</div>
-            </div>
+            <div><div class="cert-card-title">Microsoft Azure Fundamentals</div><div class="cert-card-sub">AZ-900 - Microsoft</div></div>
             <span class="cert-badge-pill earned">Earned</span>
           </div>
           <div class="cert-card">
             <div class="cert-logo google">G</div>
-            <div>
-              <div class="cert-card-title">Google IT Support</div>
-              <div class="cert-card-sub">Professional Certificate - Coursera</div>
-            </div>
+            <div><div class="cert-card-title">Google IT Support</div><div class="cert-card-sub">Professional Certificate - Coursera</div></div>
             <span class="cert-badge-pill earned">Earned</span>
           </div>
           <div class="cert-card">
             <div class="cert-logo comptia">A+</div>
-            <div>
-              <div class="cert-card-title">CompTIA A+</div>
-              <div class="cert-card-sub">220-1101 / 220-1102</div>
-            </div>
+            <div><div class="cert-card-title">CompTIA A+</div><div class="cert-card-sub">220-1101 / 220-1102</div></div>
             <span class="cert-badge-pill progress">In Progress</span>
           </div>
         </div>
